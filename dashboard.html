@@ -13,20 +13,23 @@
     url('header.png');
   background-size: cover;
   background-position: center;
-  color: white;
   padding: 10px 25px;
   border-radius: 10px;
-  text-align: center;
-  font-family: 'Segoe UI', sans-serif;
-  text-shadow: 1px 1px 3px #6a1b9a;
   display: flex;
-  align-items: center;
-  height: 130px;   /* control header height */
+  justify-content: center;   /* horizontal center */
+  align-items: center;       /* vertical center */
+  height: 130px;
+  margin: 0;
 ">
-   <img src="KERA_dashboard.png" alt="Dashboard" style="
-      height: 200%;
-      object-fit: contain;
-   ">
+<!-- Dashboard Logo -->
+<p><img src="KERA_dashboard.png" alt="Dashboard" style="
+height: 200%;
+object-fit: contain;
+"></p>
+   <!-- Back Button -->
+   <a href="index.html" class="back-home-header">
+      ⬅ Back to Home (KERA-AWD)
+   </a>
 </h2>
 <!-- HEADER WITH TABS + SEARCH + DOWNLOAD--> 
 <html>
@@ -50,30 +53,6 @@ body {
   background: #fafafa;
 }
 
-/* Blinking download button */
-@keyframes blinkFlash {
-  0%, 100% { opacity: 1; color: #fff; }
-  50% { opacity: 0.5; color: yellow; }
-}
-#downloadBtn {
-  position: fixed;
-  right: 16px;
-  top: 12px;
-  z-index: 9999;
-  background: var(--main-green);
-  border: none;
-  padding: 8px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  font-weight: 600;
-  font-family: 'Courier New', Courier, monospace;
-  animation: blinkFlash 1.5s infinite;
-  color: white;
-}
-#downloadBtn:hover {
-  background: var(--main-green-dark);
-}
 
 /* Top bar with tabs left, search right */
 .tab-bar {
@@ -220,23 +199,37 @@ mark.active-match {
   background: orange;
 }
 
+@keyframes multiFlash {
+  0%   { color: #ffffff; }
+  25%  { color: #ffeb3b; }   /* yellow */
+  50%  { color: #4CAF50; }   /* green */
+  75%  { color: #00bcd4; }   /* blue */
+  100% { color: #ffffff; }
+}
+
+.flashing-tab {
+  animation: multiFlash 1.5s infinite;
+  font-weight: 700;
+}
+
 </style>
 </head>
 <body>
 <div id="dashboardContent">
 <!-- Fixed download button -->
-<button id="downloadBtn" title="Download all tabs">⬇️ Download Full Report</button>
+<p><button id="downloadBtn" title="Download all tabs">⬇️ Download Full Report</button></p>
 <!-- Tab bar -->
 <div class="tab-bar">
   <div class="tab-links">
-    <button class="tab-link active" data-target="home" onclick="openTab(event,'home')">🏠 Home</button>
-    <button class="tab-link" data-target="initialoverview" onclick="openTab(event,'initialoverview')">📊 Overview</button>
-    <button class="tab-link" data-target="agrlland" onclick="openTab(event,'agrlland')">🌾🏞️Agricultural Land</button>
-    <button class="tab-link" data-target="production" onclick="openTab(event,'production')">🌾📊Production Details</button>
-    <button class="tab-link" data-target="residue" onclick="openTab(event,'residue')"> 🌾♻ Residue management</button>
-    <button class="tab-link" data-target="GHG" onclick="openTab(event,'GHG')"> 💨🌍 Greenhouse Gas Emissions</button>
-    <button class="tab-link" data-target="attitude" onclick="openTab(event,'attitude')"> 👨‍🌾💭Farmer knowledge and willingness towards LEPs</button>
+    <button class="tab-link active" data-target="home" onclick="openTab(event,'home')"Home</button>
+    <button class="tab-link" data-target="initialoverview" onclick="openTab(event,'initialoverview')">Overview</button>
+    <button class="tab-link" data-target="agrlland" onclick="openTab(event,'agrlland')">Agricultural Land</button>
+    <button class="tab-link" data-target="production" onclick="openTab(event,'production')">Production Details</button>
+    <button class="tab-link" data-target="residue" onclick="openTab(event,'residue')">Residue management</button>
+    <button class="tab-link" data-target="GHG" onclick="openTab(event,'GHG')">GHG Emissions</button>
+    <button class="tab-link" data-target="attitude" onclick="openTab(event,'attitude')">Knowledge and willingness towards LEPs</button>
     <button class="tab-link" data-target="image" onclick="openTab(event,'image')"> 📷Image gallery </button>
+    <button class="tab-link" data-target="download" onclick="openTab(event,'download')"> ⬇️Downloads </button>
   </div>
   <div class="search-box">
     <input id="searchInput" placeholder="Search...">
